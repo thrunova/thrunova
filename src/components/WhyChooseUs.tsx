@@ -1,13 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
+import tpBeginVideo from '../assets/tpbegin.mp4';
+import thrunovaPlan from '../assets/thrunova_plan.png';
+import thrunovaBuild from '../assets/thrunova_build.png';
+import thrunovaLaunch from '../assets/thrunova_launch.png';
 
-const steps = [
+const steps: Array<{
+  num: string;
+  label: string;
+  heading: string;
+  body: string;
+  bullets: string[];
+  img?: string;
+  video?: string;
+}> = [
   {
     num: '01',
     label: 'Discover',
     heading: 'We start by understanding your world.',
     body: 'Before we write a single line of code, we dive deep into your business — your operations, bottlenecks, tools, and goals. We map every friction point and opportunity for intelligent automation.',
     bullets: ['Business & tech stack audit', 'Pain-point mapping', 'Opportunity assessment', 'Scope & timeline alignment'],
-    img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=900&auto=format&fit=crop',
+    video: tpBeginVideo,
   },
   {
     num: '02',
@@ -15,7 +27,7 @@ const steps = [
     heading: 'We design before we build.',
     body: 'Every system is blueprinted for modularity, security, and scale. We produce a full technical architecture: data flows, API contracts, model selection, and infrastructure — before a single hour of development begins.',
     bullets: ['System architecture diagrams', 'API & data-flow design', 'Model & tool selection', 'Security & compliance planning'],
-    img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=900&auto=format&fit=crop',
+    img: thrunovaPlan,
   },
   {
     num: '03',
@@ -23,7 +35,7 @@ const steps = [
     heading: 'We build with precision and speed.',
     body: 'Agile sprints, daily standups, and rigorous testing. We ship iteratively so you see working software within weeks — not months. Every feature is peer-reviewed and tested before deployment.',
     bullets: ['Agile sprint methodology', 'Continuous integration & testing', 'Weekly progress demos', 'Zero-downtime deployments'],
-    img: 'https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?q=80&w=900&auto=format&fit=crop',
+    img: thrunovaBuild,
   },
   {
     num: '04',
@@ -31,7 +43,7 @@ const steps = [
     heading: 'We launch and stay with you.',
     body: 'Go-live is just the beginning. We monitor performance, tune models, fix issues proactively, and iterate based on real usage data — ensuring your systems get better over time.',
     bullets: ['Controlled production release', 'Performance monitoring', 'Model fine-tuning & iteration', 'Ongoing support & optimisation'],
-    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop',
+    img: thrunovaLaunch,
   },
 ];
 
@@ -127,15 +139,16 @@ export default function WhyChooseUs() {
         .wcu-panel-img-wrap {
           position: relative;
           overflow: hidden;
-          aspect-ratio: 4/3;
           border: 1.5px solid #e0e0da;
         }
-        .wcu-panel-img-wrap img {
+        .wcu-panel-img-wrap img,
+        .wcu-panel-img-wrap video {
           width: 100%; height: 100%;
           object-fit: cover; display: block;
           transition: transform 0.6s ease;
         }
-        .wcu-panel-img-wrap:hover img { transform: scale(1.04); }
+        .wcu-panel-img-wrap:hover img,
+        .wcu-panel-img-wrap:hover video { transform: scale(1.04); }
         .wcu-bullet-list {
           list-style: none; margin: 0; padding: 0;
           display: flex; flex-direction: column; gap: 0.625rem;
@@ -275,9 +288,13 @@ export default function WhyChooseUs() {
               </div>
             </div>
 
-            {/* Right — Image */}
-            <div className="wcu-panel-img-wrap">
-              <img src={step.img} alt={step.label} loading="lazy" />
+            {/* Right — Image / Video */}
+            <div className="wcu-panel-img-wrap" style={{ aspectRatio: step.video ? '16/9' : '1/1' }}>
+              {step.video ? (
+                <video src={step.video} autoPlay muted loop playsInline style={{ objectFit: 'cover' }} />
+              ) : (
+                <img src={step.img} alt={step.label} loading="lazy" style={{ objectFit: 'contain' }} />
+              )}
               {/* Number watermark */}
               <div style={{
                 position: 'absolute', bottom: '1rem', right: '1.25rem',
