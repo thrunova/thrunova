@@ -1,4 +1,8 @@
 import { useEffect, useRef } from 'react';
+import thrunovaWeb from '../assets/thrunova_website.png'; 
+import thrunovaChatbot from '../assets/chatbot_thrunova.png';
+import thrunovaSocial from '../assets/thrunova_social.png';
+
 
 const services = [
   {
@@ -13,7 +17,7 @@ const services = [
     items: ['Corporate Websites', 'E-Commerce Stores', 'Admin Dashboards', 'Custom Web Apps'],
     category: 'Development',
     tag: 'Production-Ready',
-    img: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop',
+    img: thrunovaWeb,
   },
   {
     id: 2,
@@ -27,7 +31,7 @@ const services = [
     items: ['Website Chatbots', 'WhatsApp AI Bots', 'PDF-Trained Bots', 'Lead Gen Bots'],
     category: 'AI & Agents',
     tag: '24/7 Active',
-    img: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=800&auto=format&fit=crop',
+    img: thrunovaChatbot,
   },
   {
     id: 3,
@@ -41,7 +45,7 @@ const services = [
     items: ['WhatsApp API Links', 'Auto Reply Systems', 'Instagram Scripts', 'Broadcast Tools'],
     category: 'Automation',
     tag: 'Multi-Platform',
-    img: 'https://images.unsplash.com/photo-1633412802994-5c058f151b66?q=80&w=800&auto=format&fit=crop',
+    img: thrunovaSocial,
   },
   {
     id: 4,
