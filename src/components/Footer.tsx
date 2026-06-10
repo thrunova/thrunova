@@ -91,7 +91,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(76,175,80,0.4); }
           50%       { opacity: 0.8; box-shadow: 0 0 0 5px rgba(76,175,80,0); }
         }
-      `}</style>,
+      `}</style>
 
       <footer className="footer-root" id="footer" aria-label="Site footer">
         <div className="footer-inner">
